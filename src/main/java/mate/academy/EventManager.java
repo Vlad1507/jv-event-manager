@@ -23,7 +23,7 @@ public class EventManager {
         List<CompletableFuture<Void>> completableFutures = eventListeners.stream()
                 .map(listener -> CompletableFuture.runAsync(
                         () -> listener.onEvent(event), executor)).toList();
-        CompletableFuture.allOf(completableFutures.toArray(new CompletableFuture[0])).join();
+        CompletableFuture.allOf(completableFutures.toArray(new CompletableFuture[0]));
     }
 
     public void shutdown() {
